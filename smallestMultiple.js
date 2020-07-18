@@ -4,8 +4,12 @@
 //loop through numbers from 1 to n
 //check if first number is divisible by every number from 1 to n
 
+
+
 function smallestMult(n) {
-    for (let i = n; i > -1; i++) {
+    //stop loop when i is less than 300,000,000 to prevent infinite loop
+    //change i to a larer number to test for numbers above 13
+    for (let i = n; i < 300000000; i++) {
         let result = true;
         for (let x = 2; x <= n; x++) {
             if (i % x !== 0) {
@@ -21,4 +25,4 @@ function smallestMult(n) {
     }
 }
 
-console.log(smallestMult(10));
+console.log(smallestMult(20));
