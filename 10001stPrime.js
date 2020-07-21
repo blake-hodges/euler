@@ -15,31 +15,40 @@
 
 function nthPrime(n) {
     let primesArray = [];
-    for (let i = 2; i < 105000; i++) {
+    for (let i = 2; primesArray.length < n; i++) {
         let result = isPrime(i);
         if (result == true) {
             primesArray.push(i);
         }
     }
     return primesArray[n - 1];
-}
 
-function isPrime(num) {
-    let res = true;
-    if (num == 2 || num == 3) {
-        return true;
-    } else if  (num % 2 == 0 && num > 2) {
-        return false;
-    }
-    for (let i = 3; i < num; i++) {
-        if (num % i == 0) {
-            res = false
+    function isPrime(num) {
+        let res = true;
+        if (num == 2 || num == 3) {
+            return true;
+        } else if  (num % 2 == 0 && num > 2) {
+            return false;
         }
+        for (let i = 3; i < Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                res = false
+            }
+        }
+        return res;
+
     }
-    return res;
 
 }
+
+
+
+
+let start = performance.now();
 console.log(nthPrime(10001));
+let end = performance.now();
+console.log(end - start);
+
 // console.log(nthPrime(13));
 // console.log(nthPrime(100));
 // console.log(nthPrime(1000));
