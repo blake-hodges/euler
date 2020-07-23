@@ -12,33 +12,35 @@
 
 function largestGridProduct(arr) {
     let productsArray = [];
+    let l = arr.length;
+    
     //find products of left to right adjacent numbers
-    for (let i = 0; i < 20; i++) {
-        for (let x = 0; x < 17; x++) {
+    for (let i = 0; i < l; i++) {
+        for (let x = 0; x < l - 3; x++) {
             let total = arr[i][x] * arr[i][x + 1] * arr[i][x + 2] * arr[i][x + 3];
             productsArray.push(total);
         }
     }
     //find products of down adjacent numbers
-    for (let i = 0; i < 17; i++) {
-        for (let x = 0; x < 20; x++) {
+    for (let i = 0; i < l - 3; i++) {
+        for (let x = 0; x < l; x++) {
             let total = arr[i][x] * arr[i + 1][x] * arr[i + 2][x] * arr[i + 3][x];;
             //console.log(`${arr[i][x]}, ${arr[i + 1][x]}, ${arr[i + 2][x]}, ${arr[i + 3][x]}`);
             productsArray.push(total);
         }
     }
     // //find products of right down diagonal adjacent numbers
-    for (let i = 0; i < 17; i++) {
-        for (let x = 0; x < 17; x++) {
+    for (let i = 0; i < l - 3; i++) {
+        for (let x = 0; x < l - 3; x++) {
             let total = arr[i][x] * arr[i + 1][x + 1] * arr[i + 2][x + 2] * arr[i + 3][x + 3];
-            console.log(`${arr[i][x]}, ${arr[i + 1][x + 1]}, ${arr[i + 2][x + 2]}, ${arr[i + 3][x + 3]}`);
+            //console.log(`${arr[i][x]}, ${arr[i + 1][x + 1]}, ${arr[i + 2][x + 2]}, ${arr[i + 3][x + 3]}`);
             productsArray.push(total);
         }
     }
     // //find products of left down diagonal adjacent numbers
-    for (let i = 0; i < 17; i++) {
-        for (let x = 3; x < 20; x++) {
-            console.log(`${arr[i][x]}, ${arr[i + 1][x - 1]}, ${arr[i + 2][x - 2]}, ${arr[i + 3][x - 3]}`);
+    for (let i = 0; i < l - 3; i++) {
+        for (let x = 3; x < l; x++) {
+            //console.log(`${arr[i][x]}, ${arr[i + 1][x - 1]}, ${arr[i + 2][x - 2]}, ${arr[i + 3][x - 3]}`);
             let total = arr[i][x] * arr[i + 1][x - 1] * arr[i + 2][x - 2] * arr[i + 3][x - 3];
             productsArray.push(total);
         }
@@ -82,4 +84,11 @@ const testGrid = [
   [7, 97, 57, 32, 16]
 ];
 
-console.log(largestGridProduct(grid));
+const grid2 = [
+  [40, 17, 81, 18],
+  [74, 4, 36, 16],
+  [36, 42, 69, 73],
+  [51, 54, 69, 16]
+];
+
+console.log(largestGridProduct(grid2));
