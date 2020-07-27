@@ -6,6 +6,10 @@ function sym(args) {
     for (let i = 1; i < arguments.length; i++) {
         finalArr = symmetricDifference(finalArr, arguments[i]);
     }
+
+
+
+
     return removeDuplicates(finalArr.sort());
 
     function symmetricDifference(a,b) {
